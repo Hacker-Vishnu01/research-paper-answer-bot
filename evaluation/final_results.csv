@@ -1,0 +1,21 @@
+query_id,query,model,retrieval_strategy,faithfulness,answer_relevance,semantic_correctness,citation_correctness,insufficient_evidence,latency_seconds
+Q001,What is the mathematical formula for Scaled Dot-Product Attention in the Transformer architecture?,llama3.2:3b,HybridRetriever,2,2,2,correct,False,190.467
+Q002,"How does the Transformer compute Multi-Head Attention, and what is the dimension of each head when using 8 heads with d_model=512?",llama3.2:3b,HybridRetriever,2,2,2,correct,False,176.399
+Q003,What are the two pre-training objectives used in BERT to learn bidirectional representations?,llama3.2:3b,HybridRetriever,2,2,2,correct,False,259.785
+Q004,"What percentage of tokens are masked in BERT's Masked Language Model (MLM), and how are the chosen tokens replaced?",llama3.2:3b,HybridRetriever,2,2,2,correct,False,166.671
+Q005,What is the difference between RAG-Sequence and RAG-Token models in the original Retrieval-Augmented Generation paper?,llama3.2:3b,HybridRetriever,2,2,2,correct,False,148.487
+Q006,How does Retrieval-Augmented Generation combine parametric memory with non-parametric retrieval memory?,llama3.2:3b,HybridRetriever,2,2,2,correct,False,187.419
+Q007,Why is Sentence-BERT computationally faster than cross-encoder BERT for large-scale semantic similarity search and clustering?,llama3.2:3b,HybridRetriever,2,2,2,correct,False,199.996
+Q008,What pooling strategies does Sentence-BERT evaluate to derive fixed-size sentence embeddings from BERT?,llama3.2:3b,HybridRetriever,2,2,2,correct,False,155.644
+Q009,How does Dense Passage Retrieval (DPR) use dual-encoders to score relevance between a question and candidate passages?,llama3.2:3b,HybridRetriever,2,2,2,correct,False,153.809
+Q010,What negative passage sampling strategies does DPR evaluate during dual-encoder training?,llama3.2:3b,HybridRetriever,2,2,2,correct,False,162.598
+Q011,What contrastive learning objective and data augmentation methods does Contriever use for unsupervised dense information retrieval?,llama3.2:3b,HybridRetriever,2,2,2,correct,False,164.485
+Q012,How does Low-Rank Adaptation (LoRA) decompose weight updates in transformer layers using low-rank matrices?,llama3.2:3b,HybridRetriever,1,2,1,correct,False,175.26
+Q013,What are the storage and inference latency advantages of LoRA compared to traditional full model fine-tuning?,llama3.2:3b,HybridRetriever,2,2,1,correct,False,181.277
+Q014,What is 4-bit NormalFloat (NF4) in QLoRA and why is it information-theoretically optimal for normally distributed weights?,llama3.2:3b,HybridRetriever,2,2,1,correct,False,226.63
+Q015,How do Double Quantization and Paged Optimizers in QLoRA reduce GPU memory footprint during model fine-tuning?,llama3.2:3b,HybridRetriever,1,2,1,not_applicable,True,193.912
+Q016,How does chain-of-thought prompting elicit multi-step reasoning capabilities in large language models on arithmetic tasks?,llama3.2:3b,HybridRetriever,2,2,2,correct,False,208.27
+Q017,What special reflection tokens does Self-RAG introduce to dynamically determine when to retrieve and critique output quality?,llama3.2:3b,HybridRetriever,2,2,2,correct,False,141.454
+Q018,How does Self-RAG assess whether retrieved passages are relevant using the ISREL reflection token?,llama3.2:3b,HybridRetriever,2,2,2,correct,False,132.852
+Q019,What is the U-shaped performance degradation observed in Lost in the Middle when relevant information is positioned in the center of long input contexts?,llama3.2:3b,HybridRetriever,2,2,1,correct,False,233.416
+Q020,"What are the key architectural differences between Naive RAG, Advanced RAG, and Modular RAG described in the RAG survey?",llama3.2:3b,HybridRetriever,2,2,2,correct,False,160.612

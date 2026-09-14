@@ -1,0 +1,117 @@
+question_id,dataset_split,topic,question,expected_paper_ids,cited_paper_ids,citation_count,citation_correctness,insufficient_evidence,answer,latency_seconds,measured_latency_seconds,retrieval_strategy
+Q001,dev,Transformers,What is the mathematical formula for Scaled Dot-Product Attention in the Transformer architecture?,P001,P001,3,correct,False,"The mathematical formula for Scaled Dot-Product Attention in the Transformer architecture is:
+
+Attention(Q,K,V ) = softmax(QK T √dk)V (1)
+
+where Q, K, and V are matrices of dimensions dmodel × dk, dmodel × dk, and dmodel × dv, respectively, and √dk is a scaling factor.",190.467,190.467,HybridRetriever
+Q002,test,Transformers,"How does the Transformer compute Multi-Head Attention, and what is the dimension of each head when using 8 heads with d_model=512?",P001,P001,3,correct,False,"The Transformer computes Multi-Head Attention by concatenating the output values of each attention head and then projecting them again, resulting in the final values.
+
+Passage 1 states that Multi-head attention allows the model to jointly attend to information from different representation subspaces at different positions. It also defines Multi-Head(Q,K,V) = Concat(head 1,..., headh)W O, where headi = Attention(QW Qi, KW Ki, VW Vi), and WQi, WKi, and VWi are parameter matrices.
+
+Passage 1 also states that for each of the 8 parallel attention layers, or heads, dk = dv = dmodel/h = 64. This means that the dimension of each head is 64 when using 8 heads with d_model = 512.",176.399,176.399,HybridRetriever
+Q003,dev,BERT / Language Models,What are the two pre-training objectives used in BERT to learn bidirectional representations?,P002,P002,3,correct,False,"The two pre-training objectives used in BERT to learn bidirectional representations are:
+
+1. Masked Language Model (MLM) objective: This objective randomly masks some of the tokens from the input and requires the model to predict the original vocabulary id of the masked token.
+2. Next Sentence Prediction (NSP) task: This task jointly pre-trains text-pair representations, where the model is trained to predict whether a pair of sentences is coherent or not.
+
+Passages that support this answer:
+
+* Passage 1: ""Unlike left-to-right language model pre-training, the MLM objective enables the representation to fuse the left and the right context, which allows us to pretrain a deep bidirectional Transformer.""
+* Passage 3: ""For each task, we simply plug in the taskspecific inputs and outputs into BERT and fine-tune all the parameters end-to-end. At the input, sentence A and sentence B from pre-training are analogous to (1) sentence pairs in paraphrasing, (2) hypothesis-premise pairs in entailment, (3) question-passage pairs in question answering, and (4) a degenerate text- ∅ pair in text classification or sequence tagging.""
+* Passage 4: ""Task #1: Masked LM Intuitively, it is reasonable to believe that a deep bidirectional model is strictly more powerful than either a left-to-right model or the shallow concatenation of a left-to-right and a right-to-left model. Unfortunately, standard conditional language models can only be trained left-to-right or right-to-left, since bidirectional conditioning would allow each word to indirectly “see itself”, and the model could trivially predict the target word in a multi-layered context.""
+* Passage 6: ""BERT is designed to pretrain deep bidirectional representations from unlabeled text by jointly conditioning on both left and right context in all layers.""",259.785,259.785,HybridRetriever
+Q004,test,BERT / Language Models,"What percentage of tokens are masked in BERT's Masked Language Model (MLM), and how are the chosen tokens replaced?",P002,P002,3,correct,False,"What percentage of tokens are masked in BERT's Masked Language Model (MLM), and how are the chosen tokens replaced?
+
+According to Passage 3, BERT masks 15% of all WordPiece tokens in each sequence at random. Passage 6 further illustrates the masking procedure, stating that:
+
+* 80% of the time, the word is replaced with the [MASK] token
+* 10% of the time, the word is replaced with a random word
+* 10% of the time, the word is kept unchanged
+
+This procedure is referred to as a ""masked LM"" (MLM) and is used to train the model.",166.671,166.671,HybridRetriever
+Q005,dev,Retrieval-Augmented Generation,What is the difference between RAG-Sequence and RAG-Token models in the original Retrieval-Augmented Generation paper?,P003,P003;P012,3,correct,False,"The difference between RAG-Sequence and RAG-Token models in the original Retrieval-Augmented Generation paper is that RAG-Sequence uses the same retrieved document to generate the complete sequence, treating the retrieved document as a single latent variable that is marginalized to get the seq2seq probability p(y|x), whereas RAG-Token can predict each target token based on a different document.",148.487,148.487,HybridRetriever
+Q006,test,Retrieval-Augmented Generation,How does Retrieval-Augmented Generation combine parametric memory with non-parametric retrieval memory?,P003,P003,3,correct,False,"Retrieval-Augmented Generation combines parametric memory with non-parametric retrieval memory by using a pre-trained seq2seq model as the parametric memory and a dense vector index of Wikipedia as the non-parametric memory, accessed with a pre-trained neural retriever.
+
+Passage 4 supports this answer, stating that the parametric memory is a pre-trained seq2seq model and the non-parametric memory is a dense vector index of Wikipedia, accessed with a pre-trained neural retriever.
+
+Passage 8 also supports this answer, describing how the retriever provides latent documents conditioned on the input, and the seq2seq model conditions on these latent documents together with the input to generate the output.
+
+Passage 6 supports this answer, stating that the ability to access knowledge is present without additional training, as both the parametric and non-parametric memory components are pre-trained and pre-loaded with extensive knowledge.
+
+Passage 9 provides the overall framework for Retrieval-Augmented Generation, but does not provide specific details on the combination of parametric and non-parametric memory.",187.419,187.419,HybridRetriever
+Q007,dev,Sentence Embeddings,Why is Sentence-BERT computationally faster than cross-encoder BERT for large-scale semantic similarity search and clustering?,P004,P004,3,correct,False,"Sentence-BERT is computationally faster than cross-encoder BERT for large-scale semantic similarity search and clustering because SBERT uses a siamese network architecture that enables the derivation of fixed-sized sentence embeddings, which can be compared using cosine-similarity. This reduces the effort for finding the most similar pair from 65 hours with BERT to about 5 seconds with SBERT.
+
+Passages that support this answer:
+
+- Passage 3: This passage states that SBERT derives semantically meaningful sentence embeddings that can be compared using cosine-similarity, which reduces the effort for finding the most similar pair.
+- Passage 5: This passage states that SBERT reduces the effort for finding the most similar pair from 65 hours with BERT to about 5 seconds.
+- Passage 7: This passage states that SBERT outperforms other sentence embedding methods, including InferSent and Universal Sentence Encoder, which suggests that SBERT is computationally faster.",199.996,199.996,HybridRetriever
+Q008,test,Sentence Embeddings,What pooling strategies does Sentence-BERT evaluate to derive fixed-size sentence embeddings from BERT?,P004,P004,3,correct,False,"Sentence-BERT evaluates three pooling strategies to derive fixed-size sentence embeddings from BERT: 
+
+1. Using the output of the CLS-token
+2. Computing the mean of all output vectors (MEAN-strategy)
+3. Computing a max-over-time of the output vectors (MAX-strategy)
+
+These three pooling strategies are mentioned in Passage 2.",155.644,155.644,HybridRetriever
+Q009,dev,Dense Retrieval,How does Dense Passage Retrieval (DPR) use dual-encoders to score relevance between a question and candidate passages?,P005,P005,3,correct,False,"Dense Passage Retrieval (DPR) uses dual-encoders to score relevance between a question and candidate passages by applying a different encoderEQ(·) that maps the input question to a d-dimensional vector, and retrieving k passages of which vectors are the closest to the question vector. The similarity between the question and the passage is defined using the dot product of their vectors: sim(q,p ) = EQ(q)⊺EP (p).",153.809,153.809,HybridRetriever
+Q010,test,Dense Retrieval,What negative passage sampling strategies does DPR evaluate during dual-encoder training?,P005,P005,3,correct,False,"DPR evaluates three negative passage sampling strategies during dual-encoder training:
+
+1. Random: any random passage from the corpus.
+2. BM25: top passages returned by BM25 which don’t contain the answer but match most question tokens.
+3. Gold passages: positive passages from other questions.
+
+Passage 5 supports this answer, as it describes three types of negatives: random, BM25, and gold passages.",162.598,162.598,HybridRetriever
+Q011,dev,Unsupervised Dense Retrieval,What contrastive learning objective and data augmentation methods does Contriever use for unsupervised dense information retrieval?,P006,P006,3,correct,False,"Contriever uses the MoCo algorithm with a queue of size 131,072, a momentum value of 0.9995, and a temperature of 0.05 for its contrastive learning objective. Additionally, Contriever employs random cropping data augmentation, with documents of 256 tokens and span sizes sampled between 5% and 50% of the document length.",164.485,164.485,HybridRetriever
+Q012,dev,Efficient LLMs / PEFT,How does Low-Rank Adaptation (LoRA) decompose weight updates in transformer layers using low-rank matrices?,P007,P007,3,correct,False,"Low-Rank Adaptation (LoRA) decomposes weight updates in transformer layers using low-rank matrices by representing the update as a low-rank decomposition of the pre-trained weight matrix, W0, into W0 + ∆W = W0 + BA, where B ∈ Rd×r and A ∈ Rr×k. The rank r is constrained to be much smaller than the minimum of the dimension d and the number of columns k, i.e., r ≪ min(d, k). This decomposition allows LoRA to adapt the pre-trained weights to a specific task while reducing the number of trainable parameters.",175.26,175.26,HybridRetriever
+Q013,test,Efficient LLMs / PEFT,What are the storage and inference latency advantages of LoRA compared to traditional full model fine-tuning?,P007,P007,3,correct,False,"LoRA reduces storage requirements by 3 times compared to traditional full model fine-tuning, as stated in Passage 9: ""LoRA can reduce the GPU memory requirement by 3 times.""
+
+LoRA also reduces inference latency, as stated in Passage 1: ""No Additional Inference Latency. When deployed in production, we can explicitly compute and store W = W0 +BA and perform inference as usual.""
+
+Note that Passage 3 mentions that adapter layers introduce additional inference latency, but Passage 1 states that LoRA does not introduce additional inference latency.",181.277,181.277,HybridRetriever
+Q014,dev,Efficient LLMs / Quantization,What is 4-bit NormalFloat (NF4) in QLoRA and why is it information-theoretically optimal for normally distributed weights?,P008,P008,3,correct,False,"4-bit NormalFloat (NF4) is a data type in QLoRA that is information-theoretically optimal for zero-centered normally distributed data. NF4 is a k-bit data type that is created by estimating the quantiles of two ranges: 2k−1 for the negative part and 2k−1 + 1 for the positive part. The resulting data type has equal expected number of values in each quantization bin, making it information-theoretically optimal for zero-centered normally distributed data.
+
+Passages that support this answer:
+
+- Passage 2: This passage describes the components of QLORA, including the 4-bit NormalFloat (NF4) data type. It explains that NF4 is created by estimating the quantiles of two ranges and has equal expected number of values in each quantization bin.
+- Passage 4: This passage provides more details about the NF4 data type, including its exact values. It also explains that NF4 is information-theoretically optimal for zero-centered normally distributed data.
+- Passage 6: This passage discusses the components of QLORA, including the 4-bit NormalFloat (NF4) data type. It explains that NF4 is used in QLORA for efficient finetuning of quantized LLMs.",226.63,226.63,HybridRetriever
+Q015,test,Efficient LLMs / Quantization,How do Double Quantization and Paged Optimizers in QLoRA reduce GPU memory footprint during model fine-tuning?,P008,,0,not_applicable,True,"Double Quantization and Paged Optimizers in QLoRA reduce GPU memory footprint during model fine-tuning by reducing the memory footprint per parameter and preventing memory spikes during gradient checkpointing, respectively.
+
+Passage 8 supports the first part of the answer, stating that Double Quantization reduces the memory footprint per parameter from 32/64 = 0.5 bits to 8/64 + 32/(64· 256) = 0.127 bits, a reduction of 0.373 bits per parameter.
+
+Passage 6 supports the second part of the answer, stating that Paged Optimizers use NVIDIA unified memory to avoid gradient checkpointing memory spikes that occur when processing a mini-batch with a long sequence length.
+
+The provided research papers do not contain sufficient evidence to answer the question of how Double Quantization and Paged Optimizers interact to reduce GPU memory footprint during model fine-tuning.",193.912,193.912,HybridRetriever
+Q016,dev,Prompt Engineering & Reasoning,How does chain-of-thought prompting elicit multi-step reasoning capabilities in large language models on arithmetic tasks?,P009,P009,3,correct,False,"Chain-of-thought prompting elicits multi-step reasoning capabilities in large language models on arithmetic tasks by allowing models to decompose complex problems into intermediate steps, which enables additional computation to be allocated to problems.
+
+Passage 8 supports this answer, stating that ""chain of thought, in principle, allows models to decompose multi-step problems into intermediate steps, which means that additional computation can be allocated to problems.""
+
+Passage 9 also supports this answer, stating that ""chain-of-thought prompting improves performance across all three models (LaMDA, GPT-3, and PaLM) for all datasets except CSQA and StrategyQA for GPT-3.""
+
+Passage 3 supports the idea that chain-of-thought prompting is generally applicable and can be used for a range of reasoning tasks, including arithmetic reasoning.
+
+Passage 7 supports the idea that the performance gain from chain-of-thought prompting is largest for models that meet certain conditions, including having a large size and a relatively flat scaling curve.
+
+Passage 1 states that chain-of-thought prompting improves performance on a range of arithmetic, commonsense, and symbolic reasoning tasks, and that the emergence of chain-of-thought reasoning as a result of model scale has been a prevailing theme in the field.",208.27,208.27,HybridRetriever
+Q017,dev,Advanced RAG / Self-Reflection,What special reflection tokens does Self-RAG introduce to dynamically determine when to retrieve and critique output quality?,P010,P010,3,correct,False,"Self-RAG introduces two types of reflection tokens: ""retrieve"" and ""critic"". The ""retrieve"" token signals the need for retrieval, while the ""critic"" token signals the need for critique. These tokens are used to dynamically determine when to retrieve and critique output quality.",141.454,141.454,HybridRetriever
+Q018,test,Advanced RAG / Self-Reflection,How does Self-RAG assess whether retrieved passages are relevant using the ISREL reflection token?,P010,P010,3,correct,False,"Self-RAG assesses whether retrieved passages are relevant using the ISREL reflection token by predicting ISREL given the input, retrieved passage, and the previous segment.",132.852,132.852,HybridRetriever
+Q019,dev,Context Windows / RAG Limitations,What is the U-shaped performance degradation observed in Lost in the Middle when relevant information is positioned in the center of long input contexts?,P011,P011,3,correct,False,"The U-shaped performance degradation observed in Lost in the Middle when relevant information is positioned in the center of long input contexts is that performance is highest when relevant information occurs at the very beginning or end of the input context, and performance significantly degrades when models must access and use information in the middle of their input context.
+
+Passage 4 supports this answer, stating that ""performance is highest when relevant information occurs at the very beginning (primacy bias) or end of its input context (recency bias), and performance significantly degrades when models must access and use information in the middle of their input context.""
+
+Passage 4 also states that ""when relevant information is placed in the middle of its input context, GPT-3.5-Turbo’s performance on the multidocument question task is lower than its performance when predicting without any documents (i.e., the closed-book setting); 56.1%.""
+
+Passage 6 supports this answer, stating that ""performance is higher when relevant information occurs at the beginning or end of the input context, as opposed to the middle of the input context.""
+
+Passage 8 also supports this answer, stating that ""both MPT-30B and MPT-30B-Instruct exhibit a U-shaped performance curve, where performance is much higher when relevant information occurs at the start or end of the context.""
+
+These passages collectively support the answer that the U-shaped performance degradation observed in Lost in the Middle when relevant information is positioned in the center of long input contexts is due to a significant degradation in performance when models must access and use information in the middle of their input context.",233.416,233.416,HybridRetriever
+Q020,test,RAG Survey,"What are the key architectural differences between Naive RAG, Advanced RAG, and Modular RAG described in the RAG survey?",P012,P012,3,correct,False,"Naive RAG, Advanced RAG, and Modular RAG differ in their architectural approaches.
+
+Naive RAG mainly consists of three parts: indexing, retrieval, and generation.
+
+Advanced RAG proposes multiple optimization strategies around pre-retrieval and post-retrieval, with a process similar to the Naive RAG, still following a chain-like structure.
+
+Modular RAG inherits and develops from the previous paradigm, showcasing greater flexibility overall. This is evident in the introduction of multiple specific functional modules and the replacement of existing modules. The overall process is not limited to sequential retrieval and generation; it includes methods such as iterative and adaptive retrieval.
+
+The key architectural differences between Naive RAG, Advanced RAG, and Modular RAG are described in Passages 2, 5, and 6.",160.612,160.612,HybridRetriever

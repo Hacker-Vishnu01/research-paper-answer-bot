@@ -1,0 +1,4 @@
+model_name,model_type,embedding_dimension,num_chunks,embedding_time_seconds,status
+sentence-transformers/all-mpnet-base-v2,Open-Source (HuggingFace),768,1172,881.86,success
+BAAI/bge-base-en-v1.5,Open-Source (HuggingFace),0,0,0.0,"error: Can't load the model for 'BAAI/bge-base-en-v1.5'. If you were trying to load it from 'https://huggingface.co/models', make sure you don't have a local directory with the same name. Otherwise, make sure 'BAAI/bge-base-en-v1.5' is the correct path to a directory containing a file named pytorch_model.bin."
+text-embedding-3-small,Commercial API (OpenAI),1536,1172,0.0,not executed (missing API key)

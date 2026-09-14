@@ -1,0 +1,5 @@
+config_name,chunk_size,chunk_overlap,total_chunks,avg_chunk_length,min_chunk_length,max_chunk_length,avg_chunks_per_paper,avg_chunks_per_page,metadata_preserved,processing_time_seconds
+Config A,500,50,2182,436.4,1,500,181.8,8.42,True,0.2376
+Config B,750,100,1543,656.4,33,750,128.6,5.96,True,0.2305
+Config C,1000,150,1172,876.5,72,1000,97.7,4.53,True,0.2072
+Config D,1500,200,804,1268.1,184,1500,67.0,3.1,True,0.1972

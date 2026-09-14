@@ -1,0 +1,4 @@
+model_name,hit_at_3,hit_at_5,hit_at_10,mrr,precision_at_3,recall_at_3,average_query_latency,status
+sentence-transformers/all-mpnet-base-v2,1.0,1.0,1.0,0.9167,0.8833,2.65,0.1347,success
+BAAI/bge-base-en-v1.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,"error: Can't load the model for 'BAAI/bge-base-en-v1.5'. If you were trying to load it from 'https://huggingface.co/models', make sure you don't have a local directory with the same name. Otherwise, make sure 'BAAI/bge-base-en-v1.5' is the correct path to a directory containing a file named pytorch_model.bin."
+text-embedding-3-small,0.0,0.0,0.0,0.0,0.0,0.0,0.0,not executed (missing API key)

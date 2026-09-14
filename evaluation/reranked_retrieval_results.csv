@@ -1,0 +1,21 @@
+question_id,question,expected_paper_ids,top_1_paper,retrieved_paper_ids,hit_at_3,hit_at_5,hit_at_10,mrr,precision_at_3,recall_at_3,latency_seconds
+Q001,What is the mathematical formula for Scaled Dot-Product Attention in the Transformer architecture?,P001,P001,"P001,P007",1.0,1.0,1.0,1.0,0.3333333333333333,1.0,1.0173319000023184
+Q002,"How does the Transformer compute Multi-Head Attention, and what is the dimension of each head when using 8 heads with d_model=512?",P001,P001,"P001,P007",1.0,1.0,1.0,1.0,0.3333333333333333,1.0,0.9952562999969814
+Q003,What are the two pre-training objectives used in BERT to learn bidirectional representations?,P002,P002,P002,1.0,1.0,1.0,1.0,0.3333333333333333,1.0,0.9279940999986138
+Q004,"What percentage of tokens are masked in BERT's Masked Language Model (MLM), and how are the chosen tokens replaced?",P002,P002,"P002,P006",1.0,1.0,1.0,1.0,0.3333333333333333,1.0,0.8442776000010781
+Q005,What is the difference between RAG-Sequence and RAG-Token models in the original Retrieval-Augmented Generation paper?,P003,P003,"P003,P012,P002",1.0,1.0,1.0,1.0,0.3333333333333333,1.0,0.8830722999991849
+Q006,How does Retrieval-Augmented Generation combine parametric memory with non-parametric retrieval memory?,P003,P003,P003,1.0,1.0,1.0,1.0,0.3333333333333333,1.0,0.7938196000031894
+Q007,Why is Sentence-BERT computationally faster than cross-encoder BERT for large-scale semantic similarity search and clustering?,P004,P004,"P004,P005",1.0,1.0,1.0,1.0,0.3333333333333333,1.0,0.8425631999998586
+Q008,What pooling strategies does Sentence-BERT evaluate to derive fixed-size sentence embeddings from BERT?,P004,P004,P004,1.0,1.0,1.0,1.0,0.3333333333333333,1.0,0.8169816000008723
+Q009,How does Dense Passage Retrieval (DPR) use dual-encoders to score relevance between a question and candidate passages?,P005,P005,P005,1.0,1.0,1.0,1.0,0.3333333333333333,1.0,0.9308993999875383
+Q010,What negative passage sampling strategies does DPR evaluate during dual-encoder training?,P005,P005,"P005,P003,P006",1.0,1.0,1.0,1.0,0.3333333333333333,1.0,0.9301161999901524
+Q011,What contrastive learning objective and data augmentation methods does Contriever use for unsupervised dense information retrieval?,P006,P006,P006,1.0,1.0,1.0,1.0,0.3333333333333333,1.0,1.0937915999966208
+Q012,How does Low-Rank Adaptation (LoRA) decompose weight updates in transformer layers using low-rank matrices?,P007,P007,P007,1.0,1.0,1.0,1.0,0.3333333333333333,1.0,1.3929209000052651
+Q013,What are the storage and inference latency advantages of LoRA compared to traditional full model fine-tuning?,P007,P007,"P007,P008",1.0,1.0,1.0,1.0,0.3333333333333333,1.0,0.8548277000081725
+Q014,What is 4-bit NormalFloat (NF4) in QLoRA and why is it information-theoretically optimal for normally distributed weights?,P008,P008,P008,1.0,1.0,1.0,1.0,0.3333333333333333,1.0,1.1528456000087317
+Q015,How do Double Quantization and Paged Optimizers in QLoRA reduce GPU memory footprint during model fine-tuning?,P008,P008,P008,1.0,1.0,1.0,1.0,0.3333333333333333,1.0,1.0042925999878207
+Q016,How does chain-of-thought prompting elicit multi-step reasoning capabilities in large language models on arithmetic tasks?,P009,P009,P009,1.0,1.0,1.0,1.0,0.3333333333333333,1.0,0.7332843000040157
+Q017,What special reflection tokens does Self-RAG introduce to dynamically determine when to retrieve and critique output quality?,P010,P010,"P010,P012",1.0,1.0,1.0,1.0,0.3333333333333333,1.0,0.9535514999879524
+Q018,How does Self-RAG assess whether retrieved passages are relevant using the ISREL reflection token?,P010,P010,"P010,P012",1.0,1.0,1.0,1.0,0.3333333333333333,1.0,0.8101859000016702
+Q019,What is the U-shaped performance degradation observed in Lost in the Middle when relevant information is positioned in the center of long input contexts?,P011,P011,P011,1.0,1.0,1.0,1.0,0.3333333333333333,1.0,0.7901051999942865
+Q020,"What are the key architectural differences between Naive RAG, Advanced RAG, and Modular RAG described in the RAG survey?",P012,P012,P012,1.0,1.0,1.0,1.0,0.3333333333333333,1.0,0.6941405999968993

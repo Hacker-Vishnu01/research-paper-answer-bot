@@ -1,0 +1,142 @@
+[
+  {
+    "question_id": "Q001",
+    "question": "What is the mathematical formula for Scaled Dot-Product Attention in the Transformer architecture?",
+    "expected_paper_ids": ["P001"],
+    "topic": "Transformers",
+    "dataset_split": "dev"
+  },
+  {
+    "question_id": "Q002",
+    "question": "How does the Transformer compute Multi-Head Attention, and what is the dimension of each head when using 8 heads with d_model=512?",
+    "expected_paper_ids": ["P001"],
+    "topic": "Transformers",
+    "dataset_split": "test"
+  },
+  {
+    "question_id": "Q003",
+    "question": "What are the two pre-training objectives used in BERT to learn bidirectional representations?",
+    "expected_paper_ids": ["P002"],
+    "topic": "BERT / Language Models",
+    "dataset_split": "dev"
+  },
+  {
+    "question_id": "Q004",
+    "question": "What percentage of tokens are masked in BERT's Masked Language Model (MLM), and how are the chosen tokens replaced?",
+    "expected_paper_ids": ["P002"],
+    "topic": "BERT / Language Models",
+    "dataset_split": "test"
+  },
+  {
+    "question_id": "Q005",
+    "question": "What is the difference between RAG-Sequence and RAG-Token models in the original Retrieval-Augmented Generation paper?",
+    "expected_paper_ids": ["P003"],
+    "topic": "Retrieval-Augmented Generation",
+    "dataset_split": "dev"
+  },
+  {
+    "question_id": "Q006",
+    "question": "How does Retrieval-Augmented Generation combine parametric memory with non-parametric retrieval memory?",
+    "expected_paper_ids": ["P003"],
+    "topic": "Retrieval-Augmented Generation",
+    "dataset_split": "test"
+  },
+  {
+    "question_id": "Q007",
+    "question": "Why is Sentence-BERT computationally faster than cross-encoder BERT for large-scale semantic similarity search and clustering?",
+    "expected_paper_ids": ["P004"],
+    "topic": "Sentence Embeddings",
+    "dataset_split": "dev"
+  },
+  {
+    "question_id": "Q008",
+    "question": "What pooling strategies does Sentence-BERT evaluate to derive fixed-size sentence embeddings from BERT?",
+    "expected_paper_ids": ["P004"],
+    "topic": "Sentence Embeddings",
+    "dataset_split": "test"
+  },
+  {
+    "question_id": "Q009",
+    "question": "How does Dense Passage Retrieval (DPR) use dual-encoders to score relevance between a question and candidate passages?",
+    "expected_paper_ids": ["P005"],
+    "topic": "Dense Retrieval",
+    "dataset_split": "dev"
+  },
+  {
+    "question_id": "Q010",
+    "question": "What negative passage sampling strategies does DPR evaluate during dual-encoder training?",
+    "expected_paper_ids": ["P005"],
+    "topic": "Dense Retrieval",
+    "dataset_split": "test"
+  },
+  {
+    "question_id": "Q011",
+    "question": "What contrastive learning objective and data augmentation methods does Contriever use for unsupervised dense information retrieval?",
+    "expected_paper_ids": ["P006"],
+    "topic": "Unsupervised Dense Retrieval",
+    "dataset_split": "dev"
+  },
+  {
+    "question_id": "Q012",
+    "question": "How does Low-Rank Adaptation (LoRA) decompose weight updates in transformer layers using low-rank matrices?",
+    "expected_paper_ids": ["P007"],
+    "topic": "Efficient LLMs / PEFT",
+    "dataset_split": "dev"
+  },
+  {
+    "question_id": "Q013",
+    "question": "What are the storage and inference latency advantages of LoRA compared to traditional full model fine-tuning?",
+    "expected_paper_ids": ["P007"],
+    "topic": "Efficient LLMs / PEFT",
+    "dataset_split": "test"
+  },
+  {
+    "question_id": "Q014",
+    "question": "What is 4-bit NormalFloat (NF4) in QLoRA and why is it information-theoretically optimal for normally distributed weights?",
+    "expected_paper_ids": ["P008"],
+    "topic": "Efficient LLMs / Quantization",
+    "dataset_split": "dev"
+  },
+  {
+    "question_id": "Q015",
+    "question": "How do Double Quantization and Paged Optimizers in QLoRA reduce GPU memory footprint during model fine-tuning?",
+    "expected_paper_ids": ["P008"],
+    "topic": "Efficient LLMs / Quantization",
+    "dataset_split": "test"
+  },
+  {
+    "question_id": "Q016",
+    "question": "How does chain-of-thought prompting elicit multi-step reasoning capabilities in large language models on arithmetic tasks?",
+    "expected_paper_ids": ["P009"],
+    "topic": "Prompt Engineering & Reasoning",
+    "dataset_split": "dev"
+  },
+  {
+    "question_id": "Q017",
+    "question": "What special reflection tokens does Self-RAG introduce to dynamically determine when to retrieve and critique output quality?",
+    "expected_paper_ids": ["P010"],
+    "topic": "Advanced RAG / Self-Reflection",
+    "dataset_split": "dev"
+  },
+  {
+    "question_id": "Q018",
+    "question": "How does Self-RAG assess whether retrieved passages are relevant using the ISREL reflection token?",
+    "expected_paper_ids": ["P010"],
+    "topic": "Advanced RAG / Self-Reflection",
+    "dataset_split": "test"
+  },
+  {
+    "question_id": "Q019",
+    "question": "What is the U-shaped performance degradation observed in Lost in the Middle when relevant information is positioned in the center of long input contexts?",
+    "expected_paper_ids": ["P011"],
+    "topic": "Context Windows / RAG Limitations",
+    "dataset_split": "dev"
+  },
+  {
+    "question_id": "Q020",
+    "question": "What are the key architectural differences between Naive RAG, Advanced RAG, and Modular RAG described in the RAG survey?",
+    "expected_paper_ids": ["P012"],
+    "topic": "RAG Survey",
+    "dataset_split": "test"
+  }
+]

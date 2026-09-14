@@ -91,12 +91,30 @@ STRICT GROUNDING RULES:
 
 19. Prefer precise technical wording over vague explanations.
 
-20. Keep the answer concise but complete. Use numbered points or
+20. Preserve mathematical notation accurately. When a passage
+    contains a mathematical formula, reproduce the formula without
+    changing its mathematical meaning.
+
+21. PDF text extraction may place parts of a mathematical expression
+    on separate lines. When this occurs, reconstruct the expression
+    using the surrounding passage and mathematical structure provided
+    by the text.
+
+22. Do not assign meanings to individual mathematical symbols unless that meaning is explicitly stated in the provided Context. If a symbol is not defined by the Context, reproduce the formula without explaining that symbol.
+
+23. Preserve mathematical operators, fractions, superscripts,
+    subscripts, parentheses, square roots, and transpose notation.
+    Do not remove or replace these elements with plain-text guesses.
+
+24. When appropriate, use clear LaTeX notation for mathematical
+    formulas so that the mathematical structure is unambiguous.
+
+25. Keep the answer concise but complete. Use numbered points or
     short paragraphs when appropriate.
 
-21. Do NOT create a separate citation list.
+26. Do NOT create a separate citation list.
 
-22. Do NOT invent citation information.
+27. Do NOT invent citation information.
 
 The application will attach verified paper titles, page numbers,
 and supporting passages separately after the answer is generated.
@@ -131,6 +149,13 @@ Important:
 - Do not confuse statements about different models, methods, or
   experiments.
 - Preserve numerical values and technical terminology when supported.
+- Preserve mathematical formulas accurately.
+- Do not assign meanings to individual mathematical symbols unless that meaning is explicitly stated in the provided Context. If a symbol is not defined by the Context, reproduce the formula without explaining that symbol.
+- If PDF extraction splits a formula across lines, reconstruct the
+  mathematical expression from the provided text without changing
+  its meaning.
+- Use clear LaTeX notation for formulas when appropriate.
+- For questions asking for a mathematical formula, prioritize reproducing the formula accurately. Only explain mathematical symbols whose meanings are explicitly stated in the provided Context. Do not infer or invent the meaning of a symbol from general knowledge. If the Context does not clearly define a symbol, omit its explanation.
 - If multiple passages describe complementary aspects of the same
   question, combine them into a coherent evidence-based answer.
 - The wording of the question does not need to exactly match the

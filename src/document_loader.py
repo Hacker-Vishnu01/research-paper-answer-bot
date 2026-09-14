@@ -70,6 +70,59 @@ def load_metadata_catalog(catalog_path: Path) -> Dict[str, PaperMetadata]:
     return catalog
 
 
+def _suspicious_normal_extraction(text: str) -> bool:
+    """
+    Detects a small class of PDF extraction problems where mathematical
+    expressions are split across multiple lines by normal pypdf extraction.
+
+    This is intentionally conservative. Layout extraction is used only
+    when there is evidence that normal extraction may have broken a formula.
+    """
+    lines = [line.strip() for line in text.splitlines() if line.strip()]
+
+    sqrt_symbol = chr(0x221A)
+
+    formula_terms = (
+        "softmax",
+        "Attention(",
+        "attention(",
+        sqrt_symbol,
+        "QK",
+        "K^T",
+        "KT",
+    )
+
+    for i, line in enumerate(lines):
+        if not any(term in line for term in formula_terms):
+            continue
+
+        # Detect a mathematical expression whose continuation was
+        # extracted as a very short separate line.
+        if i + 1 < len(lines):
+            next_line = lines[i + 1]
+
+            if len(next_line) <= 12 and (
+                sqrt_symbol in next_line
+                or next_line.startswith(")")
+                or next_line.startswith("]")
+                or next_line.startswith("}")
+            ):
+                return True
+
+        # Detect an attention formula split across nearby lines.
+        if "Attention(Q" in line and "=" in line:
+            nearby = " ".join(lines[i:i + 3])
+
+            if "softmax" in nearby and (
+                sqrt_symbol in nearby
+                or "QK" in nearby
+                or "KT" in nearby
+            ):
+                return True
+
+    return False
+
+
 def load_pdf_pages(pdf_path: Path, paper_metadata: PaperMetadata) -> List[DocumentPage]:
     """
     Extracts text from each page of a research paper PDF preserving page numbers.
@@ -88,7 +141,17 @@ def load_pdf_pages(pdf_path: Path, paper_metadata: PaperMetadata) -> List[Docume
     pages: List[DocumentPage] = []
 
     for idx, page in enumerate(reader.pages):
+        # Use normal extraction by default. Only fall back to layout
+        # extraction when the normal output appears to split a formula.
         page_text = page.extract_text() or ""
+
+        if _suspicious_normal_extraction(page_text):
+            layout_text = page.extract_text(extraction_mode="layout") or ""
+
+            # Use layout extraction only when it actually returned text.
+            if layout_text.strip():
+                page_text = layout_text
+
         doc_page = DocumentPage(
             paper_id=paper_metadata.paper_id,
             paper_title=paper_metadata.title,

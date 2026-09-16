@@ -4,6 +4,18 @@ A Retrieval-Augmented Generation (RAG) system for answering academic questions f
 
 The system combines **dense semantic retrieval**, **BM25 lexical retrieval**, **Reciprocal Rank Fusion (RRF)**, and a **local Llama 3.2 3B language model** running through Ollama.
 
+## 🎯 Project Highlights
+
+- 12 research papers processed
+- 259 pages indexed
+- 1,172 production chunks
+- Hybrid retrieval using Dense Retrieval + BM25
+- Reciprocal Rank Fusion (RRF)
+- Local Llama 3.2 3B generation through Ollama
+- Evidence-grounded answers with source citations
+- Streamlit-based interactive interface
+- 20-question evaluation dataset
+
 ---
 
 ## 1. Project Overview
@@ -661,15 +673,7 @@ For targeted testing, an individual evaluation question can be run:
 python .\src\evaluate_rag_answers.py --question-id Q001
 ```
 
-This is useful when validating:
-
-* Prompt changes
-* Mathematical extraction fixes
-* Retrieval changes
-* Citation behavior
-* Individual answer quality
-
-Running individual questions is generally faster than rerunning the complete evaluation.
+This is useful when validating prompt changes, mathematical extraction fixes, retrieval changes, citation behavior, or individual answer quality.
 
 ---
 
@@ -729,17 +733,13 @@ A targeted mathematical extraction fallback has been implemented, but it does no
 
 ### 3. Local LLM Latency
 
-The application uses a local 3B-parameter model through Ollama.
-
-Answer generation can therefore be relatively slow, especially without GPU acceleration.
+The application uses a local 3B-parameter model through Ollama. Answer generation can therefore be relatively slow, especially without GPU acceleration.
 
 The final 20-question evaluation averaged approximately **161.763 seconds per response**.
 
 ### 4. Small Evaluation Set
 
-The current evaluation contains only 20 questions.
-
-A larger and more diverse benchmark would provide stronger evidence about system performance.
+The current evaluation contains only 20 questions. A larger and more diverse benchmark would provide stronger evidence about system performance.
 
 ### 5. No Production Cross-Encoder Reranking
 

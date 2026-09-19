@@ -823,3 +823,16 @@ This project builds upon open-source technologies and research including:
 * Streamlit
 
 The research papers used by the system remain the intellectual property of their respective authors and publishers.
+
+## Application Demo
+
+The application provides an interactive interface for asking questions against the indexed research-paper collection and returning evidence-grounded answers with source references.
+
+### Streamlit Interface
+
+![Streamlit Interface](screenshots/streamlit-demo-1.png)
+
+### Answer & Evidence
+
+![Answer and Evidence](screenshots/streamlit-demo-2.png)
+
